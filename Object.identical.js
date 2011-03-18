@@ -23,9 +23,8 @@ Object.identical = function (a, b, ignoreOrder) {
                 return sort(o[key]);
             });
         }
-        else {
-            return o;   
-        }
+        
+        return o;
     }
     
     if (ignoreOrder === true) {
