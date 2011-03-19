@@ -3,6 +3,10 @@
     Copyright (c) 2011, Chris O'Brien, prettycode.org
     http://github.com/prettycode/Object.identical.js
 
+    NOTE: This script requires ECMAScript5 functions Array.isArray()
+    and Object.keys(). These functions are NOT created if they 
+    do not exist.
+
     LICENSE: Permission is hereby granted for unrestricted use,
     modification, and redistribution of this script, ONLY under
     the condition that this code comment is kept wholly complete,
