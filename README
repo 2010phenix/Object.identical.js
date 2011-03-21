@@ -1,4 +1,5 @@
-`Object.identical` determines whether two objects are "identical" or not, meaning they have the same values or member values:
+`Object.identical` determines whether two objects are "identical" or not, meaning they have the same values or member
+values:
 
     Object.identical(a, b, ignoreOrder);
 
@@ -11,7 +12,8 @@ For example, with arrays:
         
 `a` and `b` are identical because both arrays have the same number of elements and those elements have the same values.
 
-To compare `a` and `b` irrespective of element order, pass `true` for the third parameter, which ignores the order of elements, or with objects, members:
+To compare `a` and `b` irrespective of element order, pass `true` for the third parameter, which ignores the order of
+elements, or with objects, members:
 
     var a = [2, 1],
         b = [1, 2];
@@ -29,9 +31,11 @@ With objects, `identical()` works similarly:
     console.log(Object.identical(a, c));       // false
     console.log(Object.identical(a, c, true)); // true
         
-`Object.identical` checks the entire object graph, so members of `a` or `b` that are objects themselves are also examined.
+`Object.identical` checks the entire object graph, so members of `a` or `b` that are objects themselves are also
+examined.
 
-When `a` and `b` are `number`, `string`, or `boolean` primitives, `Object.identical` returns the same result as using the `===` operator:
+When `a` and `b` are `number`, `string`, or `boolean` primitives, `Object.identical` returns the same result as using
+the `===` operator:
 
     console.log(Object.identical("1", "1"));    // true
     console.log(Object.identical("1", "1 "));   // false
