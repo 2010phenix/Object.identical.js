@@ -24,7 +24,7 @@ With objects, `identical()` works similarly:
     var a = { a: "a", b: "b" },
         b = { a: "a", b: "b" },
         c = { b: "b", a: "a" };
-        
+         
     console.log(Object.identical(a, b));       // true
     console.log(Object.identical(a, c));       // false
     console.log(Object.identical(a, c, true)); // true
