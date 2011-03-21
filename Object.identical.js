@@ -3,10 +3,6 @@
     Copyright (c) 2011, Chris O'Brien, prettycode.org
     http://github.com/prettycode/Object.identical.js
 
-    NOTE: This script requires ECMAScript5 functions Array.isArray()
-    and Object.keys(). These functions are NOT created if they 
-    do not exist.
-
     LICENSE: Permission is hereby granted for unrestricted use,
     modification, and redistribution of this script, ONLY under
     the condition that this code comment is kept wholly complete,
@@ -14,6 +10,18 @@
     modified implementations of this script, except those that
     are minified.
 */
+
+// Array.isArray() ECMAScript5 stand-in from:
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/isArray
+
+Array.isArray = Array.isArray || function(o) {
+	return Object.prototype.toString.call(o) === '[object Array]';
+};
+
+// Object.keys() ECMAScript5 stand-in based off of:
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys
+
+if (!Object.keys) { Object.keys = function(o) { var r=[],p; for(p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p); return r; }; }
 
 Object.$identical = function (a, b, ignoreOrder) {
     
