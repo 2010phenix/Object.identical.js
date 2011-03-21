@@ -34,7 +34,7 @@ With objects, `identical()` works similarly:
 When `a` and `b` are `number`, `string`, or `boolean` primitives, `Object.identical` returns the same result as using the `===` operator:
 
     console.log(Object.identical("1", "1"));    // true
-    console.log(Object.identical("1", "1 "));    // false
-    console.log(Object.identical(true, true));    // true
-    console.log(Object.identical(3.14, 3.14));    // true
+    console.log(Object.identical("1", "1 "));   // false
+    console.log(Object.identical(true, true));  // true
+    console.log(Object.identical(3.14, 3.14));  // true
         
