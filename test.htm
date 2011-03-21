@@ -15,7 +15,7 @@
 		a = [1, 2];
 		b = [1, 2];
 			
-		if (Object.identical(a, b) !== true) {
+		if (Object.$identical(a, b) !== true) {
 			throw "Array comparison failed with arrays in same order.";
 		}
 	})();
@@ -25,11 +25,11 @@
 		a = [2, 1];
         b = [1, 2];
 
-		if (Object.identical(a, b) !== false) {
+		if (Object.$identical(a, b) !== false) {
 			throw "Array comparison failed: arrays in different order returned as identical.";
 		}
 		
-		if (Object.identical(a, b, true) !== true) {
+		if (Object.$identical(a, b, true) !== true) {
 			throw "Array comparison with `ignoreOrder` failed.";
 		}
 	
@@ -41,15 +41,15 @@
         b = { a: "a", b: "b" };
         c = { b: "b", a: "a" };
          
-		if (Object.identical(a, b) !== true) {
+		if (Object.$identical(a, b) !== true) {
 			throw "Object comparison failed with arrays in same order.";
 		}
 		
-		if (Object.identical(a, c) === true) {
+		if (Object.$identical(a, c) === true) {
 			throw "Object comparison failed: object with members in different order returned as identical.";
 		}
 		
-		if (Object.identical(a, c, true) !== true) {
+		if (Object.$identical(a, c, true) !== true) {
 			throw "Object comparison with `ignoreOrder` failed.";
 		}
 	

@@ -1,14 +1,14 @@
-`Object.identical` determines whether two objects are "identical" or not, meaning they have the same values or member
+`Object.$identical` determines whether two objects are "identical" or not, meaning they have the same values or member
 values:
 
-    Object.identical(a, b, ignoreOrder);
+    Object.$identical(a, b, ignoreOrder);
 
 For example, with arrays:
 
     var a = [1, 2],
         b = [1, 2];
         
-    console.log(Object.identical(a, b)); // true
+    console.log(Object.$identical(a, b)); // true
         
 `a` and `b` are identical because both arrays have the same number of elements and those elements have the same values.
 
@@ -18,26 +18,26 @@ elements, or with objects, members:
     var a = [2, 1],
         b = [1, 2];
 
-    console.log(Object.identical(a, b));       // false
-    console.log(Object.identical(a, b, true)); // true
+    console.log(Object.$identical(a, b));       // false
+    console.log(Object.$identical(a, b, true)); // true
     
-With objects, `Object.identical` works similarly:
+With objects, `$identical()` works similarly:
 
     var a = { a: "a", b: "b" },
         b = { a: "a", b: "b" },
         c = { b: "b", a: "a" };
          
-    console.log(Object.identical(a, b));       // true
-    console.log(Object.identical(a, c));       // false
-    console.log(Object.identical(a, c, true)); // true
+    console.log(Object.$identical(a, b));       // true
+    console.log(Object.$identical(a, c));       // false
+    console.log(Object.$identical(a, c, true)); // true
         
-`Object.identical` checks the entire object graph, so members of `a` or `b` that are objects themselves are also
+`$identical()` checks the entire object graph, so members of `a` or `b` that are objects themselves are also
 examined.
 
-When `a` and `b` are `number`, `string`, or `boolean` primitives, `Object.identical` returns the same result as using
+When `a` and `b` are `number`, `string`, or `boolean` primitives, `$identical()` returns the same result as using
 the `===` operator:
 
-    console.log(Object.identical("1", "1"));    // true
-    console.log(Object.identical("1", "1 "));   // false
-    console.log(Object.identical(true, true));  // true
-    console.log(Object.identical(3.14, 3.14));  // true
+    console.log(Object.$identical("1", "1"));    // true
+    console.log(Object.$identical("1", "1 "));   // false
+    console.log(Object.$identical(true, true));  // true
+    console.log(Object.$identical(3.14, 3.14));  // true

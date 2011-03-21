@@ -15,7 +15,7 @@
     are minified.
 */
 
-Object.identical = function (a, b, ignoreOrder) {
+Object.$identical = function (a, b, ignoreOrder) {
     
     function sort(o) {
         
