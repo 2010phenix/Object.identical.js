@@ -21,7 +21,7 @@ elements, or with objects, members:
     console.log(Object.identical(a, b));       // false
     console.log(Object.identical(a, b, true)); // true
     
-With objects, `identical()` works similarly:
+With objects, `Object.identical` works similarly:
 
     var a = { a: "a", b: "b" },
         b = { a: "a", b: "b" },
@@ -41,4 +41,3 @@ the `===` operator:
     console.log(Object.identical("1", "1 "));   // false
     console.log(Object.identical(true, true));  // true
     console.log(Object.identical(3.14, 3.14));  // true
-        
