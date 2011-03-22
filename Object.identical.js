@@ -1,5 +1,5 @@
 /*
-    Original script title: Object.identical.js, v1.0
+    Original script title: Object.identical.js, v1.1
     Copyright (c) 2011, Chris O'Brien, prettycode.org
     http://github.com/prettycode/Object.identical.js
 
@@ -11,38 +11,25 @@
     are minified.
 */
 
-// Array.isArray() ECMAScript5 stand-in from:
-// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/isArray
-
-Array.isArray = Array.isArray || function(o) {
-	return Object.prototype.toString.call(o) === '[object Array]';
-};
-
-// Object.keys() ECMAScript5 stand-in based off of:
-// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys
-
-if (!Object.keys) { Object.keys = function(o) { var r=[],p; for(p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p); return r; }; }
-
-Object.$identical = function (a, b, ignoreOrder) {
+Object.$identical = function (a, b, sortArrays) {
     
     function sort(o) {
         
-        if (Array.isArray(o)) {
+        if (sortArrays === true && Array.isArray(o)) {
             return o.sort();
         }
-        else if (typeof o === "object") {
-            return Object.keys(o).sort().map(function(key) {
-                return sort(o[key]);
-            });
+        else if (typeof o !== "object") {
+            return o;
         }
         
-        return o;
+        var result = {};
+        
+        Object.keys(o).sort().forEach(function(key) {
+            result[key] = sort(o[key]);
+        });
+        
+        return result;
     }
     
-    if (ignoreOrder === true) {
-        a = sort(a);
-        b = sort(b);
-    }
-    
-    return JSON.stringify(a) === JSON.stringify(b);
+    return JSON.stringify(sort(a)) === JSON.stringify(sort(b));
 }

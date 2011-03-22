@@ -1,43 +1,57 @@
-`Object.$identical` determines whether two objects are "identical" or not, meaning they have the same values or member
+Note that this script requires ECMAScript5 functions:
+
+    - Array.isArray()
+    - Object.keys()
+    - Array.forEach()
+    
+The script does not create these functions if they do not exist. It simply fails.
+
+`Object.$identical()` determines whether two objects are "identical" or not, meaning they have the same values or member
 values:
 
-    Object.$identical(a, b, ignoreOrder);
-
-For example, with arrays:
-
-    var a = [1, 2],
-        b = [1, 2];
-        
-    console.log(Object.$identical(a, b)); // true
-        
-`a` and `b` are identical because both arrays have the same number of elements and those elements have the same values.
-
-To compare `a` and `b` irrespective of element order, pass `true` for the third parameter, which ignores the order of
-elements, or with objects, members:
-
-    var a = [2, 1],
-        b = [1, 2];
-
-    console.log(Object.$identical(a, b));       // false
-    console.log(Object.$identical(a, b, true)); // true
+    Object.$identical(a, b, sortArrays);    
     
-With objects, `$identical()` works similarly:
+For example, with objects:
 
-    var a = { a: "a", b: "b" },
-        b = { a: "a", b: "b" },
-        c = { b: "b", a: "a" };
+    var a = { x: "a", y: "b" },
+        b = { x: "a", y: "b" },
+        c = { y: "b", x: "a" };
          
-    console.log(Object.$identical(a, b));       // true
-    console.log(Object.$identical(a, c));       // false
-    console.log(Object.$identical(a, c, true)); // true
-        
+    console.log(Object.$identical(a, b)); // true
+    console.log(Object.$identical(a, c)); // true
+
 `$identical()` checks the entire object graph, so members of `a` or `b` that are objects themselves are also
 examined.
+    
+When `a` and `b` are `string`, `number`, or `boolean` types, `$identical()` will return the same result as using the
+`===` operator:
 
-When `a` and `b` are `number`, `string`, or `boolean` primitives, `$identical()` returns the same result as using
-the `===` operator:
+    var a = "1",
+        b = 1;
+        c = 1.0;
+    
+    console.log(Object.$identical(a, b)); // false
+    console.log(Object.$identical(b, c)); // true
+    
+When using `$identical()` with arrays, element order matters:
 
-    console.log(Object.$identical("1", "1"));    // true
-    console.log(Object.$identical("1", "1 "));   // false
-    console.log(Object.$identical(true, true));  // true
-    console.log(Object.$identical(3.14, 3.14));  // true
+    var a = [1, 2],
+        b = [1, 2],
+        c = [2, 1];
+        
+    console.log(Object.$identical(a, b)); // true
+    console.log(Object.$identical(a, c)); // false
+    
+To compare arrays or objects with array members irrespective of element order, set the `sortArrays` argument to `true`:
+
+    var a = [1, 2],
+        b = [2, 1];
+    
+    console.log(Object.$identical(a, b, true)); // true
+    console.log(Object.$identical(a, b, true)); // true
+    
+    var x = { list: [3, 2, 1], key: "Chris" },
+        y = { key: "Chris", list: [1, 2, 3] };
+
+    console.log(Object.$identical(x, y));         // false
+    console.log(Object.$identical(x, y, true)); // true

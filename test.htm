@@ -4,58 +4,93 @@
 <script src="Object.identical.js" type="text/javascript"></script>
 </head>
 <body>
-	Make sure the browser JavaScript debugger is enabled and the JavaScript console is showing.
+    Make sure the browser JavaScript debugger is enabled and the JavaScript console is showing.
 </body>
 
 <script type="text/javascript">
 
-	var a, b;
+    var a, b;
 
-	(function() {
-		a = [1, 2];
-		b = [1, 2];
-			
-		if (Object.$identical(a, b) !== true) {
-			throw "Array comparison failed with arrays in same order.";
-		}
-	})();
-	
-	(function() {
-	
-		a = [2, 1];
+    (function() {
+        a = [1, 2];
         b = [1, 2];
-
-		if (Object.$identical(a, b) !== false) {
-			throw "Array comparison failed: arrays in different order returned as identical.";
-		}
-		
-		if (Object.$identical(a, b, true) !== true) {
-			throw "Array comparison with `ignoreOrder` failed.";
-		}
-	
-	})();
-	
-	(function() {
-	
-	    a = { a: "a", b: "b" };
+            
+        if (Object.$identical(a, b) !== true) {
+            throw "Array comparison failed for identical arrays with multiple elements.";
+        }
+    })();
+    
+    (function() {
+        a = [1];
+        b = [1];
+            
+        if (Object.$identical(a, b) !== true) {
+            throw "Array comparison failed with arrays with one element.";
+        }
+    })();
+    
+    (function() {
+        a = [1];
+        b = [2];
+            
+        if (Object.$identical(a, b) === true) {
+            throw "Array comparison failed with arrays with different element.";
+        }
+    })();
+    
+    
+    (function() {
+        a = [1, 2];
+        b = [1, 2, 3];
+            
+        if (Object.$identical(a, b) === true) {
+            throw "Array comparison failed with arrays with different elements.";
+        }
+    })();
+    
+    (function() {
+    
+        a = { a: "a", b: "b" };
         b = { a: "a", b: "b" };
-        c = { b: "b", a: "a" };
+        var c = { b: "b", a: "a" };
          
-		if (Object.$identical(a, b) !== true) {
-			throw "Object comparison failed with arrays in same order.";
-		}
-		
-		if (Object.$identical(a, c) === true) {
-			throw "Object comparison failed: object with members in different order returned as identical.";
-		}
-		
-		if (Object.$identical(a, c, true) !== true) {
-			throw "Object comparison with `ignoreOrder` failed.";
-		}
-	
-	})();
+        if (Object.$identical(a, b) !== true) {
+            throw "Object comparison failed with object members in same order.";
+        }
+        
+        if (Object.$identical(a, c) !== true) {
+            throw "Object comparison failed with object members in different order.";
+        }
+    
+    })();
+    
+    (function() {
+    
+        a = { a: "a", b: "b", c: true };
+        b = { a: "a", b: "b", c: false };
+         
+        if (Object.$identical(a, b) === true) {
+            throw "Object comparison failed with object members in same order.";
+        }
+        
+    })();
+    
+    (function() {
+        
+        var a = { list: [3, 2, 1], key: "Chris" },
+            b = { key: "Chris", list: [1, 2, 3] };
 
-	console.log("All tests pass.");
+        if (Object.$identical(a, b) === true) {
+            throw "Object comparison return false positive with arrays.";
+        }
+        
+        if (Object.$identical(a, b, true) !== true) {
+            throw "Object comparison failed when with sortedArrays set to true.";
+        }    
+        
+    })();
+
+    console.log("All tests pass.");
 
 </script>
 
