@@ -12,7 +12,9 @@
 */
 
 Object.$identical = function (a, b, sortArrays) {
-    
+  
+    // requires ECMAScript5 Array.isArray(), Object.Keys(), and Array.forEach()
+  
     function sort(o) {
         
         if (sortArrays === true && Array.isArray(o)) {
