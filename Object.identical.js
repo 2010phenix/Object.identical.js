@@ -13,7 +13,7 @@
 
 Object.$identical = function (a, b, sortArrays) {
   
-    // requires ECMAScript5 Array.isArray(), Object.Keys(), and Array.forEach()
+    // requires ECMAScript5 Array.isArray(), Object.keys(), and Array.prototype.forEach()
   
     function sort(o) {
         
