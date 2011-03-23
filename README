@@ -1,4 +1,4 @@
-AUTHOR: Chris (chris@prettycode.org)
+AUTHOR: Chris (chris at prettycode dot org)
 
 
 PREFACE:
@@ -12,8 +12,8 @@ Note that this script requires ECMAScript5 functions:
 The script does not create these functions if they do not exist. It simply fails. You should be
 using a script like Underscore that creates them--or equivalents--when they are not defined.
 
-If you do not know whether your browser supports these ECMAScript5 functions above, please see 
-<url>http://kangax.github.com/es5-compat-table/</url>.
+If you do not know whether your browser supports these ECMAScript5 functions above, please see
+http://kangax.github.com/es5-compat-table/.
 
 
 OBJECT.$IDENTICAL() OVERVIEW
