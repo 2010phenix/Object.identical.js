@@ -49,7 +49,7 @@ For example, with objects:
     console.log(Object.$identical(a, b)); // true (same properties and same property values)
     console.log(Object.$identical(a, c)); // true (object property order does not matter, simple)
     console.log(Object.$identical(d, e)); // true (object property order does not matter, complex)
-    console.log(Object.$identical(d, f)); // false (arrays are by definition ordered in JavaScript)
+    console.log(Object.$identical(d, f)); // false (arrays are, by definition, ordered)
     
 When `a` and `b` are `string`, `number`, or `boolean` types, `$identical()` will return the same
 result as using the `===` operator:
