@@ -32,7 +32,7 @@ arguments must both be one of three three following:
        of property name order
        
 When `sortArrays` set to `true`, all the rules above apply, but rule b) is irrespective of element
-value order, while by default, element values must be in the same order.
+order, while by default, elements must be in the same order.
 
 
 EXAMPLES
