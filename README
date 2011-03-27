@@ -8,6 +8,7 @@ Note that this script requires ECMAScript5 functions:
     - Array.isArray()
     - Object.keys()
     - Array.forEach()
+    - JSON.stringify()
     
 The script does not create these functions if they do not exist. It simply fails. You should be
 using a script like Underscore that creates them--or equivalents--when they are not defined.
