@@ -3,7 +3,7 @@ AUTHOR: Chris (chris @t prettycode dot org)
 
 PREFACE:
 
-Note that this script requires ECMAScript5 functions:
+Note that this script requires ECMAScript 5 functions:
 
     - Array.isArray()
     - Object.keys()
