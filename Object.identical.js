@@ -11,9 +11,9 @@
     are minified.
 */
 
-Object.$identical = function (a, b, sortArrays) {
+Object.identical = function (a, b, sortArrays) {
   
-    // requires ECMAScript5 Array.isArray(), Object.keys(), and Array.prototype.forEach()
+    // requires ECMAScript 5 Array.isArray(), Object.keys(), Array.prototype.forEach(), and JSON.stringify()
   
     function sort(o) {
         

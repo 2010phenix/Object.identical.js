@@ -15,7 +15,7 @@
         a = [1, 2];
         b = [1, 2];
             
-        if (Object.$identical(a, b) !== true) {
+        if (Object.identical(a, b) !== true) {
             throw "Array comparison failed for identical arrays with multiple elements.";
         }
     })();
@@ -24,7 +24,7 @@
         a = [1];
         b = [1];
             
-        if (Object.$identical(a, b) !== true) {
+        if (Object.identical(a, b) !== true) {
             throw "Array comparison failed with arrays with one element.";
         }
     })();
@@ -33,7 +33,7 @@
         a = [1];
         b = [2];
             
-        if (Object.$identical(a, b) === true) {
+        if (Object.identical(a, b) === true) {
             throw "Array comparison failed with arrays with different element.";
         }
     })();
@@ -43,7 +43,7 @@
         a = [1, 2];
         b = [1, 2, 3];
             
-        if (Object.$identical(a, b) === true) {
+        if (Object.identical(a, b) === true) {
             throw "Array comparison failed with arrays with different elements.";
         }
     })();
@@ -54,11 +54,11 @@
         b = { a: "a", b: "b" };
         var c = { b: "b", a: "a" };
          
-        if (Object.$identical(a, b) !== true) {
+        if (Object.identical(a, b) !== true) {
             throw "Object comparison failed with object members in same order.";
         }
         
-        if (Object.$identical(a, c) !== true) {
+        if (Object.identical(a, c) !== true) {
             throw "Object comparison failed with object members in different order.";
         }
     
@@ -69,7 +69,7 @@
         a = { a: "a", b: "b", c: true };
         b = { a: "a", b: "b", c: false };
          
-        if (Object.$identical(a, b) === true) {
+        if (Object.identical(a, b) === true) {
             throw "Object comparison failed with object members in same order.";
         }
         
@@ -80,11 +80,11 @@
         var a = { list: [3, 2, 1], key: "Chris" },
             b = { key: "Chris", list: [1, 2, 3] };
 
-        if (Object.$identical(a, b) === true) {
+        if (Object.identical(a, b) === true) {
             throw "Object comparison return false positive with arrays.";
         }
         
-        if (Object.$identical(a, b, true) !== true) {
+        if (Object.identical(a, b, true) !== true) {
             throw "Object comparison failed when with sortedArrays set to true.";
         }    
         
