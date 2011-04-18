@@ -36,4 +36,4 @@ Object.identical = function (a, b, sortArrays) {
     }
     
     return JSON.stringify(sort(a)) === JSON.stringify(sort(b));
-}
+};
