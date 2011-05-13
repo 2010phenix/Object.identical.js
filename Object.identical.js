@@ -1,11 +1,11 @@
 /*
-    Original script title/version: Object.identical.js/1.11
+    Original script title: "Object.identical.js"; version 1.12
     Copyright (c) 2011, Chris O'Brien, prettycode.org
     http://github.com/prettycode/Object.identical.js
 
-    LICENSE: Permission is hereby granted for unrestricted use, modification, and redistribution of this script, ONLY
-    under the condition that this code comment is kept wholly complete, appearing above the script's code body--in all
-    original or modified implementations of this script, except those that are minified.
+    Permission is hereby granted for unrestricted use, modification, and redistribution of this
+    script, only under the condition that this code comment is kept wholly complete, appearing
+    directly above the script's code body, in all original or modified non-minified representations
 */
 
 Object.identical = function (a, b, sortArrays) {
@@ -17,19 +17,19 @@ Object.identical = function (a, b, sortArrays) {
            - JSON.stringify()
     */
   
-    function sort(o) {
+    function sort(object) {
         
-        if (sortArrays === true && Array.isArray(o)) {
-            return o.sort();
+        if (sortArrays === true && Array.isArray(object)) {
+            return object.sort();
         }
-        else if (typeof o !== "object" || o === null) {
-            return o;
+        else if (typeof object !== "object" || object === null) {
+            return object;
         }
         
         var result = {};
         
-        Object.keys(o).sort().forEach(function(key) {
-            result[key] = sort(o[key]);
+        Object.keys(object).sort().forEach(function(key) {
+            result[key] = sort(object[key]);
         });
         
         return result;
