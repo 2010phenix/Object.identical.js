@@ -26,13 +26,16 @@ Object.identical = function (a, b, sortArrays) {
             return object;
         }
         
-        var result = {};
+        var result = [];
         
         Object.keys(object).sort().forEach(function(key) {
-            result[key] = sort(object[key]);
+            result.push({
+                key: key,
+                value: sort(object[key])
+            });
         });
         
-        return result;
+        return result; 
     }
     
     return JSON.stringify(sort(a)) === JSON.stringify(sort(b));
