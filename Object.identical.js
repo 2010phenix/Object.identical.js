@@ -5,33 +5,21 @@
 */
 
 Object.identical = function (a, b, sortArrays) {
-  
-    /* Requires ECMAScript 5 functions:
-           - Array.isArray()
-           - Object.keys()
-           - Array.prototype.forEach()
-           - JSON.stringify()
-    */
-  
     function sort(object) {
-        
         if (sortArrays === true && Array.isArray(object)) {
             return object.sort();
         }
         else if (typeof object !== "object" || object === null) {
             return object;
         }
-        
-        var result = [];
-        
-        Object.keys(object).sort().forEach(function(key) {
-            result.push({
-                key: key,
-                value: sort(object[key])
-            });
-        });
-        
-        return result; 
+        else {
+        	return Object.keys(object).sort().map(function(key) {
+    			return {
+    				key: key,
+    				value: sort(object[key])
+    			};
+    		});
+        }
     }
     
     return JSON.stringify(sort(a)) === JSON.stringify(sort(b));
