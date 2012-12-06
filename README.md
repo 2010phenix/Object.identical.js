@@ -8,7 +8,7 @@ Note that this script requires ECMAScript 5 functions:
 
 * Array.isArray()
 * Object.keys()
-* Array.prototype.forEach()
+* Array.prototype.map()
 * JSON.stringify()
     
 The script does not create these functions if they do not exist. It simply fails. You should be using a script that
@@ -23,7 +23,8 @@ Overview
 `Object.identical()` determines whether two objects are "identical" or not, meaning they have the same (`===`) values
 and/or property values:
 
-    Object.identical(a, b, sortArrays); // sortArrays is falsey-false by default.
+    Object.identical(a, b);              
+    Object.identical(a, b, sortArrays); // sortArrays is optional; falsey by default
 
 In order for `identical()` to return `true` with no `sortArrays` set to `true`, `a` and `b`
 arguments must both be one of three three following:
@@ -60,7 +61,7 @@ result as using the `===` operator:
         b = 1;
         c = 1.0;
         
-    console.log(Object.identical(a, b)); // false (no truthy for numbers <-> strings
+    console.log(Object.identical(a, b)); // false (no truthy for numbers <-> strings)
     console.log(Object.identical(b, c)); // true (truthy for int <-> float)
     
 When using `identical()` with arrays, element order matters:
