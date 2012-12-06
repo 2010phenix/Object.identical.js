@@ -5,6 +5,7 @@
 */
 
 Object.identical = function (a, b, sortArrays) {
+        
     function sort(object) {
         if (sortArrays === true && Array.isArray(object)) {
             return object.sort();
@@ -12,14 +13,13 @@ Object.identical = function (a, b, sortArrays) {
         else if (typeof object !== "object" || object === null) {
             return object;
         }
-        else {
-        	return Object.keys(object).sort().map(function(key) {
-    			return {
-    				key: key,
-    				value: sort(object[key])
-    			};
-    		});
-        }
+
+        return Object.keys(object).sort().map(function(key) {
+            return {
+                key: key,
+                value: sort(object[key])
+            };
+        });
     }
     
     return JSON.stringify(sort(a)) === JSON.stringify(sort(b));
