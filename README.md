@@ -1,22 +1,6 @@
 Object.identical()
 ===================
 
-Preface
--------
-
-Note that this script requires ECMAScript 5 functions:
-
-* Array.isArray()
-* Object.keys()
-* Array.prototype.map()
-* JSON.stringify()
-    
-The script does not create these functions if they do not exist. It simply fails. You should be using a script that
-creates them when they are not defined.
-
-If you do not know whether your browser supports these ECMAScript5 functions above, please see
-http://kangax.github.com/es5-compat-table/.
-
 Overview
 --------
 
@@ -31,7 +15,7 @@ arguments must both be one of three three following:
 
     a) a `string`, `boolean`, or 'number` type, and `a === b`
     b) an `array` object, and have the same element values in the same order
-    c) an `object` type, and a), b), and./or c) are true for all its properties values, irrespective
+    c) an `object` type, and a), b), and/or c) are true for all its properties values, irrespective
        of property name order
        
 When `sortArrays` set to `true`, all the rules above apply, but rule b) is irrespective of element
@@ -62,7 +46,7 @@ result as using the `===` operator:
         c = 1.0;
         
     console.log(Object.identical(a, b)); // false (no truthy for numbers <-> strings)
-    console.log(Object.identical(b, c)); // true (truthy for int <-> float)
+    console.log(Object.identical(b, c)); // true (numbers are numbers, whether written as int or float)
     
 When using `identical()` with arrays, element order matters:
 
