@@ -1,32 +1,12 @@
-Object.identical()
-===================
+__Object.identical__(a, b) determines whether `a` and `b` are "identical," meaning they are:
 
-Overview
---------
-
-`Object.identical()` determines whether two objects are "identical" or not, meaning they have the same (`===`) values
-and/or property values:
-
-    Object.identical(a, b);              
-    Object.identical(a, b, sortArrays); // sortArrays is optional; falsey by default
-
-In order for `identical()` to return `true` with no `sortArrays` set to `true`, `a` and `b`
-arguments must both be one of three three following:
-
-    a) a `string`, `boolean`, or 'number` type, and `a === b`
-    b) an `array` object, and have the same element values in the same order
-    c) an `object` type, and a), b), and/or c) are true for all its properties values, irrespective
-       of property name order
-       
-When `sortArrays` set to `true`, all the rules above apply, but rule b) is irrespective of element
-order, while by default, elements must be in the same order.
-
-Examples
---------
+* Objects with all the same properties and property values
+* Array objects and have all the same elements
+* Primitives and `===` to one another
 
 **Objects**
 
-Compared objects must have all the same properties with the same values:
+Objects must have all the same properties with the same values:
 
     Object.identical({ x: 19, y: 83 }, { x: 19, y: 83 }); // true
     Object.identical({ x: 19, y: 83 }, { x: 19, y: 33 }); // false
