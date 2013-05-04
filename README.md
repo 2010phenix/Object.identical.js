@@ -24,50 +24,49 @@ order, while by default, elements must be in the same order.
 Examples
 --------
 
-For example, with objects:
+**Objects**
 
-    var a = { x: "a", y: "b" },
-        b = { x: "a", y: "b" },
-        c = { y: "b", x: "a" },
-        d = { x: "Chris", y: "Prettycode.org", developerYears: [1994, 2011] },
-        e = { y: "Prettycode.org", developerYears: [1994, 2011], x: "Chris" };
-        f = { y: "Prettycode.org", developerYears: [2011, 1994], x: "Chris" };
-         
-    console.log(Object.identical(a, b)); // true (same properties and same property values)
-    console.log(Object.identical(a, c)); // true (object property order does not matter, simple)
-    console.log(Object.identical(d, e)); // true (object property order does not matter, complex)
-    console.log(Object.identical(d, f)); // false (arrays are, by definition, ordered)
+Compared objects must have all the same properties with the same values:
+
+    Object.identical({ x: 19, y: 83 }, { x: 19, y: 83 }); // true
+    Object.identical({ x: 19, y: 83 }, { x: 19, y: 33 }); // false
     
-When `a` and `b` are `string`, `number`, or `boolean` types, `identical()` will return the same
-result as using the `===` operator:
+In JavaScript, object members are not ordered:
 
-    var a = "1",
-        b = 1;
-        c = 1.0;
+    var oldClient = { id: 0, name: "Farah" }
+        newClient = { name: "Farah", id: 0 };
+
+    Object.identical(oldClient, newClient); // true    
         
-    console.log(Object.identical(a, b)); // false (no truthy for numbers <-> strings)
-    console.log(Object.identical(b, c)); // true (numbers are numbers, whether written as int or float)
-    
-When using `identical()` with arrays, element order matters:
+**Arrays**
 
-    var a = [1, 2],
-        b = [1, 2],
-        c = [2, 1];
+With arrays, element order matters by default:
+
+    Object.identical([1, 2], [1, 2])); // true
+    Object.identical([1, 2], [2, 1])); // false
+    
+To compare arrays irrespective of element order, set the third argument to `true`:
+    
+    var desc = [2, 1],
+        asc  = [1, 2];
+    
+    Object.identical(desc, asc);       // false
+    Object.identical(desc, asc, true); // true
+ 
+This also applies to arrays in objects:
+ 
+    desc = { foo: { bar: [3, 2, 1] }, key: "Chris" };
+    asc  = { foo: { bar: [1, 2, 3] }, key: "Chris" };
+
+    Object.identical(desc, asc);       // false
+    Object.identical(desc, asc, true); // true
+    
+**Primitives**
+
+When comparing `string`, `number`, `boolean`, `null`, and `undefined` values, the result is the same
+as using the strict equals (`===`) operator:
         
-    console.log(Object.identical(a, b)); // true
-    console.log(Object.identical(a, c)); // false
-    
-To compare arrays or objects with array members irrespective of element order, set the `sortArrays`
-argument to `true`:
-
-    var a = [1, 2],
-        b = [2, 1];
-    
-    console.log(Object.identical(a, b, true)); // true
-    console.log(Object.identical(a, b, true)); // true
-    
-    var x = { list: [3, 2, 1], key: "Chris" },
-        y = { key: "Chris", list: [1, 2, 3] };
-
-    console.log(Object.identical(x, y));       // false
-    console.log(Object.identical(x, y, true)); // true
+    Object.identical(1, "1"));           // false (no truthy for numbers <-> strings)
+    Object.identical(0.25, 1/4));        // true (numbers are numbers, however they're written)
+    Object.identical(false, undefined);  // false (no truthy for booleans <-> undefined)
+    Object.identical(null, null);        // true (null === null)
