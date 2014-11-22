@@ -2,7 +2,7 @@ __Object.identical__(a, b) determines whether `a` and `b` are "identical," meani
 
 * Objects with all the same properties and property values
 * Array objects and have all the same elements
-* Primitives and `===` to one another
+* Primitives are `===` to one another
 
 **Objects**
 
