@@ -9,7 +9,7 @@ Object.identical()
 
 **Notes**
 
-* MIT-licensed. Please steal. Please improve. Please freely distribute.
+* MIT-licensed. Take, improve, redistribute, repeat.
 * `JSON.stringify()` is required to be defined.
 
 **Objects**
