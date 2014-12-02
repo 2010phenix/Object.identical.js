@@ -11,6 +11,7 @@ Object.identical()
 
 * MIT-licensed. Take, improve, redistribute, repeat.
 * `JSON.stringify()` is required to be defined.
+* Yes, it *is* a bad idea to extend a primitive (i.e. `Object`).
 
 **Objects**
 
