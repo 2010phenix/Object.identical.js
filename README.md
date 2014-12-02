@@ -1,12 +1,20 @@
-__Object.identical__(a, b) determines whether `a` and `b` are "identical," meaning they are:
+Object.identical()
+==================
 
-* Objects with all the same properties and property values
-* Array objects and have all the same elements
-* Primitives are `===` to one another
+`Object.identical()` determines whether two given arguments are "identical," meaning the arguments are:
+
+* Both objects having all the same properties with property values that are "identical", *or*
+* Both arrays having all "identical" elements, *or*
+* Primitives that are `===` to one another
+
+**Notes**
+
+* MIT-licensed. Please steal. Please improve. Please freely distribute.
+* `JSON.stringify()` is required to be defined.
 
 **Objects**
 
-Objects must have all the same properties with the same values:
+Objects must have all the same properties with "identical" values:
 
     Object.identical({ x: 19, y: 83 }, { x: 19, y: 83 }); // true
     Object.identical({ x: 19, y: 83 }, { x: 19, y: 33 }); // false
@@ -20,7 +28,7 @@ In JavaScript, object members are not ordered:
         
 **Arrays**
 
-With arrays, element order matters by default:
+Arrays, as a data structure, are by definition ordered. Therefore, with arrays, element order matters by default:
 
     Object.identical([1, 2], [1, 2])); // true
     Object.identical([1, 2], [2, 1])); // false
