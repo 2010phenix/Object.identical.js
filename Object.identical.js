@@ -1,11 +1,9 @@
 /*
-    Original script title: "Object.identical.js"; version 1.12
-    Copyright (c) 2011, Chris O'Brien, prettycode.org, MIT license
+    Original version copyright 2011, Chris O'Brien, prettycode.org; MIT license
     http://github.com/prettycode/Object.identical.js
 */
 
 Object.identical = function (a, b, sortArrays) {
-        
     function sort(object) {
         if (sortArrays === true && Array.isArray(object)) {
             return object.sort();
