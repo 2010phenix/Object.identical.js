@@ -1,6 +1,6 @@
 /*
-    Original version copyright 2011, Chris O'Brien, prettycode.org; MIT license
-    http://github.com/prettycode/Object.identical.js
+    Original version by Chris O'Brien; MIT license
+    prettycode.org, github.com/prettycode
 */
 
 Object.identical = function (a, b, sortArrays) {
